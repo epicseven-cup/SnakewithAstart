@@ -25,6 +25,17 @@
 
 
 #include<stdio.h>
+#include<stdlib.h>
+
+//struct does not want to work
+
+/*
+struct snake_body{
+	int x;
+	int y;
+};
+*/
+
 
 int main(int argu, char*argv){
 	size_t hight_wall = HEIGHT + 2;
@@ -50,24 +61,37 @@ int main(int argu, char*argv){
 	size_t half_w = WIDTH /2;
 	
 	int snake_length = SNAKE_SIZE;
-	
-	for(int length =0; length < snake_length; length++){
-		board[half_h][half_w + length] = SNAKE;
-	}
-	
-	
-	//Testing printing out all the character of the board
-	for(int y =0; y < HEIGHT + 2; y++){
-		for(int x=0; x < WIDTH + 2; x++){
-			putchar(board[y][x]);
-		}
-		putchar('\n');
-	}
-	
 	//Game itself
 	int snake_status = 1;
 	while(snake_status){
-		//char user_input = 
+		char snake_pos[snake_length][2];
+		
+		
+		for(int length =0; length < snake_length; length++){
+			board[half_h][half_w + length] = SNAKE;
+			char current[2];
+			//x position
+			current[0] = half_w + length;
+			current[1] = half_h;
+			//inserting the x position
+			snake_pos[length][0] = current[0];
+			//inserting the y position
+			snake_pos[length][1] = current[1];
+		}
+		//Testing printing out all the character of the board
+		for(int y =0; y < HEIGHT + 2; y++){
+			for(int x=0; x < WIDTH + 2; x++){
+				putchar(board[y][x]);
+			}
+			putchar('\n');
+		}
+		//getting user input not working correctly
+		char user_input = getchar();
+		if(user_input == 'l'){
+			putchar('a');
+		}
+		
+		//to much planning
 	}
 	
 	
