@@ -1,0 +1,7 @@
+#compliter where we use this to compile c codes
+compliter := gcc
+
+flags := -O -Wall -Werror 
+
+snake: snake.c
+	$(compliter) snake.c -o snake
